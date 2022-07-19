@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 
 function Toggle() {
-  const [state, setState] = useState('OFF');
+  const [isOn, setState] = useState(false);
 
   const toggleState = () => {
-    setState( state => state = state === 'OFF' ? 'ON' : 'OFF')
+    setState( isOn => !isOn);
   }
 
-  return <button onClick={ toggleState }>{ state }</button>;
+  const color = isOn ? 'red' : 'white';
+
+  return(
+    <button onClick={ toggleState } style={{ background: color }}>
+      { isOn ? 'ON' : 'OFF' }
+    </button>
+  )
 }
 
 export default Toggle;
